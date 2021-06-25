@@ -112,7 +112,7 @@ fake_image/00000/frame20001.jpg | fake
 ...
 ```
 
-For `testing`, `image_labels.csv` is structured as follows without any headers
+For `testing`, `image_labels.csv` is structured as follows **without any headers**
 ```
 image/00000/frame00001.jpg
 image/00000/frame10001.jpg
