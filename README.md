@@ -103,7 +103,7 @@ testing.zip/
 
 > Note that the CSV format for `dataset` and `testing` is different
 
-For `dataset`, `image_labels.csv` is structured as follows
+For `dataset`, `image_labels.csv` is structured as follows, including the `filename` and `class` headers
 ```
 filename                        | class
 fake_image/00000/frame00001.jpg | fake
@@ -112,7 +112,7 @@ fake_image/00000/frame20001.jpg | fake
 ...
 ```
 
-For `testing`, `image_labels.csv` is structured as follows **without any headers**
+For `testing`, `image_labels.csv` is structured as follows, **without any headers**
 ```
 image/00000/frame00001.jpg
 image/00000/frame10001.jpg
@@ -124,6 +124,6 @@ image/00000/frame20001.jpg
 
 1. Save the changes you have made till now
 
-2. Upload `training_dataset.zip` and `test_dataset.zip` into `base_folder`
+2. Upload `dataset.zip` and `testing.zip` into `base_folder`
 
 3. Click on `Runtime` then `Run All`
