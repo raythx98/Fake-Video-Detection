@@ -2,7 +2,7 @@
 
 <img src="banner.png" align="middle" width="3000"/>
 
-Hello! Here is my personal submission for an object detection task for Brainhack's [SeeTrue Workshop](https://www.dsta.gov.sg/brainhack) hackathon, where I achieved 7th place for most accurate model.
+Hello! Here is my personal submission for an object detection task for Brainhack's [SeeTrue Workshop](https://www.dsta.gov.sg/brainhack) hackathon, where I **achieved 7th place** for most accurate model.
 
 My implementation makes use of [InceptionV3](https://keras.io/api/applications/inceptionv3/). InceptionV3 is a convolutional neural network using the 3rd iteration of Google's Inception architecture, comprising inception modules which allow it to achieve high classification accuracy at low computation time. More on the Model Architecture [here](https://arxiv.org/abs/1512.00567).
 
