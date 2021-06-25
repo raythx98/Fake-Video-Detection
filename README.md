@@ -6,8 +6,6 @@ Hello! Here is my personal submission for an object detection task for Brainhack
 
 My implementation makes use of [InceptionV3](https://keras.io/api/applications/inceptionv3/). InceptionV3 is a convolutional neural network using the 3rd iteration of Google's Inception architecture, comprising inception modules which allow it to achieve high classification accuracy at low computation time. More on the Model Architecture [here](https://arxiv.org/abs/1512.00567).
 
-with a ResNet50-FPN backbone. To understand the underlying code structure, you can read this [article](https://zhuanlan.zhihu.com/p/145842317) by translating to English.
-
 Through robust augmentations and hyperparameter tuning, I was able to achieve an average log loss of 0.3225 on unseen photos.
 
 # Use my implementation
