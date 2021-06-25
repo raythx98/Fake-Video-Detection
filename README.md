@@ -11,8 +11,8 @@ Through robust augmentations and hyperparameter tuning, I was able to achieve an
 # Use my implementation
 
 ### Downloading my Source Code
-- Visit the [repository](https://github.com/raythx98/Object-Detection)
-- Click on `Objection Detection.ipynb`
+- Visit the [repository](https://github.com/raythx98/Fake-Video-Detection)
+- Click on `Fake Video Detection.ipynb`
 - Click on the download button
 
 ### Upload the Jupyter Notebook
@@ -26,51 +26,84 @@ Through robust augmentations and hyperparameter tuning, I was able to achieve an
 
 ### Configure the Notebook
 - Open the Jupyter Notebook
-- Under `Importing dataset from Google Drive`, change `base_folder` to your desired path
-- rename the zip file for `training_path` and `testing_path`, more on creating your dataset [below](#creating-your-datasets)
+- Under `Import dataset`, change `base_folder` to your desired path
+- rename the zip file for `dataset_path` and `testing_path`, more on creating your dataset [below](#creating-your-datasets)
 
 ### Creating your datasets
 
 #### Dataset format
-Your datasets `training_dataset.zip` and `test_dataset.zip` should follow the following format:
+Your datasets `dataset.zip` and `testing.zip` should follow the following format:
+
+> Note that training data have to be preprocessed, this notebook assumes that you have preprocessed your videos into multiple frames (approximately 20) and formatted them into .jpg files.
+
+> However, if your data is not processed - don't worry! There are helper methods defined under `Helper Methods` at the bottom of the Notebook, such as `Frame Extraction` and `Face Extraction`, to help you preprocess your video files easily!
+
+> In `testing.zip`, Both images and videos must be present, even though the prediction is made for individual frames, we will need the video to aggregate for the final prediction.
 
 ```
 dataset.zip/
-  dataset/
-    train/
-      fake_image/
-      .  00001/
-      .  .  frame00001.jpg
-      .  .  frame10001.jpg
-      .  .  frame20001.jpg
-      .  .  ...
-      .  00002/
-      .  .  frame00001.jpg
-      .  .  frame10001.jpg
-      .  .  frame20001.jpg
-      .  .  ...
-      .  00003/
-      .  .  frame00001.jpg
-      .  .  frame10001.jpg
-      .  .  frame20001.jpg
-      .  .  ...
-      .  ...
-      real_image/
-      image_labels.csv
-    val/
-      fake_image/
-      real_image/
-      image_labels.csv
+    dataset/
+        train/
+            fake_image/
+            .   00001/
+            .   .  frame00001.jpg
+            .   .  frame10001.jpg
+            .   .  frame20001.jpg
+            .   .  ...
+            .   00002/
+            .   .  frame00001.jpg
+            .   .  frame10001.jpg
+            .   .  frame20001.jpg
+            .   .  ...
+            .   00003/
+            .   .  frame00001.jpg
+            .   .  frame10001.jpg
+            .   .  frame20001.jpg
+            .   .  ...
+            .   ...
+            real_image/
+                *same as above
+            image_labels.csv
+        val/
+            fake_image/
+                *same as above
+            real_image/
+                *same as above
+            image_labels.csv
+            
+testing.zip/
+    testing/
+        test/
+            image/
+            .   00001/
+            .   .  frame00001.jpg
+            .   .  frame10001.jpg
+            .   .  frame20001.jpg
+            .   .  ...
+            .   00002/
+            .   .  frame00001.jpg
+            .   .  frame10001.jpg
+            .   .  frame20001.jpg
+            .   .  ...
+            .   00003/
+            .   .  frame00001.jpg
+            .   .  frame10001.jpg
+            .   .  frame20001.jpg
+            .   .  ...
+            .   ...
+            video/
+            .   00001.mp4
+            .   00002.mp4
+            .   00003.mp4
+            .   ...
+            image_labels.csv
 ```
 
-#### Format for training and validation json files
-`train.json` and `val.json` should follow the following format:
+#### CSV File Format
 
-> Note that this is different from `test.json` [below](#format-for-test-json-file).
-> 
-> For `train.json` and `val.json`, we will require image width and height to be specified under `images`. Also, `annotations` are not needed for `test.json`
-> 
-`image_labels.csv` is structured as follows
+> Note that the CSV format for `dataset` and `testing` is different
+
+For `dataset`, `image_labels.csv` is structured as follows
 ```
 filename                        | class
 fake_image/00000/frame00001.jpg | fake
@@ -79,37 +112,12 @@ fake_image/00000/frame20001.jpg | fake
 ...
 ```
 
-#### Format for test json file
-
-`test.json` should follow the following format:
-
+For `testing`, `image_labels.csv` is structured as follows without any headers
 ```
-train.json/
-    {
-    .   "categories": [
-    .   .   {
-    .   .       "id": 1,
-    .   .       "name": "Cat",
-    .   .   },
-    .   .   {
-    .   .       "id": 2,
-    .   .       "name": "Dog",
-    .   .   },
-    .   .   ...
-    .   ],
-    .   
-    .   "images": [
-    .   .   {
-    .   .       "id": 1,
-    .   .       "file_name": "00001.jpg",
-    .   .   },
-    .   .   {
-    .   .       "id": 2,
-    .   .       "file_name": "00002.jpg",
-    .   .   },
-    .   .   ...
-    .   ]
-    }
+image/00000/frame00001.jpg
+image/00000/frame10001.jpg
+image/00000/frame20001.jpg
+...
 ```
 
 ### Final Steps
